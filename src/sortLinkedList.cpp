@@ -34,12 +34,25 @@ struct node * sortLinkedList(struct node *head) {
 
 	int i, swapFlag=0;
 
-	struct node *curr, *temp;
+	struct node *curr, *temp=NULL;
 
-	curr = head;
+	
 
 	do{
-		
+		swapFlag = 0;
+		curr = head;
+
+		while (curr->next != temp){
+			if (curr->num > curr->next->num){
+				swapFlag = 1;
+				swapNodes(curr, curr->next);
+				}
+
+			curr = curr->next;
+			}
+		temp = curr;
 		} while (swapFlag == 1);
+
+	return head;
 
 }
